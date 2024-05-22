@@ -4,7 +4,7 @@ module dice_design(button,dice);
 input button;
 output reg [2:0]dice;
 parameter head=1,tail=0;
-always @(button)
+always @(button) 
 begin
     if(button==1)
     begin
