@@ -1,0 +1,38 @@
+//This is the design code of digital clock in verliog
+
+module clock(hour,min,present_hour,present_min,clk,enable);
+input [4:0]present_hour;
+input [5:0]present_min;
+input clk,enable;
+output reg[4:0]hour;
+output reg [5:0]min;
+reg [5:0] sec=5'd0;
+always @(present_hour,present_min,posedge clk)
+begin
+    if(enable==1)
+         begin
+            hour=present_hour;
+             min=present_min;
+         end
+    else if(enable==0)
+     begin
+        sec=sec+1;
+         if(sec==6'd60)
+         begin
+             min=min+1;
+             hour=hour;
+                if(min==6'd60)
+                begin
+                    hour=hour+1;
+                    if(hour==5'd24)
+                      begin
+                        hour=0;
+                      end
+                    min=6'd0;
+                end
+             sec=6'd0;
+          end
+     end
+
+end
+endmodule
