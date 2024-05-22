@@ -1,0 +1,17 @@
+module dice_design(button,dice);
+
+input button;
+output reg [2:0]dice;
+parameter head=1,tail=0;
+always @(button)
+begin
+    if(button==1)
+    begin
+    dice=$urandom_range(1,6);
+    end
+    else 
+    begin
+    dice=0;
+    end
+end
+endmodule
