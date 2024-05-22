@@ -1,0 +1,15 @@
+//This is the testbench(simulation) code for the digital dice
+`timescale 1ns/1ps
+module design_tb;
+reg button;
+wire [2:0]dice;
+dice_design uut(button,dice);
+
+initial 
+begin
+button=1;
+#50 $finish;
+end
+always #5 button=~button;
+
+endmodule
