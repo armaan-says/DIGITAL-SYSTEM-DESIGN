@@ -1,0 +1,14 @@
+//This is the design code
+module coin_design(button,clk,toss);
+input clk;
+input button;
+output reg toss;
+
+always @(posedge clk)
+begin
+    if(button==1)
+    begin
+    toss=$urandom_range(0,1);
+    end
+end
+endmodule
