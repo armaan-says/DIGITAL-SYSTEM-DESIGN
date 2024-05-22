@@ -1,0 +1,19 @@
+//This is the testbench for digital clock, the output will show only hours and mins.
+`timescale 1ns/1ps
+ module clock_test;
+reg  [4:0]present_hour;
+reg [5:0]present_min;
+reg clk,enable;
+wire[4:0]hour;
+wire[5:0]min;
+ clock uut(hour,min,present_hour,present_min,clk,enable);
+ initial
+ begin
+enable=1;  //this is to set the clock with the correct time
+present_hour=5'd1;present_min=6'd20; //this is a sample test case
+clk=0;
+#3 enable=0;
+
+end
+ always #0.5 clk=~clk;
+ endmodule
