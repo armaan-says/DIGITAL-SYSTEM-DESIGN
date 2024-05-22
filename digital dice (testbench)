@@ -3,7 +3,7 @@
 module design_tb;
 reg button;
 wire [2:0]dice;
-dice_design uut(button,dice);
+dice_design uut(button,dice); 
 
 initial 
 begin
