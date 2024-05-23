@@ -1,0 +1,21 @@
+//This is the design code of a light bulb operateed using two way switch using verilog
+
+//assuming there is power supply by default
+//when the two switches are in same position(either both are on or either both are of) the light bulb doesn't glow
+
+module lightbulb(bulb,switch1,switch2);
+input switch1,switch2;
+output reg bulb=0;
+always @(*)
+begin
+    if((switch1==1&&switch2==1)||(switch1==0&&switch2==0))
+    begin
+    bulb=0;
+    end
+    else
+    bulb=1;
+end
+endmodule
+
+//TITLE: Digital Light Bulb Design in Verilog
+//AUTHOR: Mohammad Armaan Hussain
