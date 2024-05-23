@@ -1,0 +1,20 @@
+//This is the testbench code for the digital timer
+
+`timescale 1ns/1ps
+module timer_tb;
+reg clk,load;
+reg [5:0]set_m,set_s;
+wire [5:0]min,sec;
+wire time_out=0;
+timer uut(min,sec,time_out,set_m,set_s,load,clk);
+initial 
+begin
+clk=0;
+load=1;set_m=6'd3;set_s=6'd00; // sample time
+#1 load=0;
+end
+always #5 clk=~clk;
+endmodule
+
+//TITLE: Digital Timer in Verilog
+//AUTHOR: Mohammad Armaan Hussain
