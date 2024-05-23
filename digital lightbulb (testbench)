@@ -1,0 +1,24 @@
+//This is the testbench code for the digital light bulb operated using two way switch
+
+`timescale 1ns/1ps
+module bulb_tb;
+reg switch1=0,switch2=0;
+wire bulb;
+lightbulb uut(bulb,switch1,switch2);
+initial 
+begin
+repeat(50)
+begin
+#5
+switch1=$urandom_range(0,1);//This function will generate 0 or 1 randomly
+switch2=$urandom_range(0,1);
+
+// when switch1 and switch2 will have (0,1) or (1,0) the light bulb will be 1 (on)
+end
+#10 $finish;
+end
+endmodule
+
+
+//TITLE: Digital Light Bulb 
+//AUTHOR: Mohammad Armaan Hussain
