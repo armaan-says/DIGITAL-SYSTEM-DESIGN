@@ -1,0 +1,26 @@
+//This is the testbench for the digital calculator using verilog
+
+`timescale 1ns/1ps
+module calculator_tb;
+wire [15:0] result;
+reg [1:0]opt;
+reg[7:0] a,b;
+digital_calculator uut(result,a,b,opt);
+initial
+begin
+opt=0;a=8'd24;b=8'd23;
+#5 opt=1;a=8'd47;b=8'd23;
+#5 opt=1;a=8'd69;b=8'd22;
+#5 opt=2;a=8'd72;b=8'd25;
+#5 opt=0;a=8'd37;b=8'd19;
+#5 opt=1;a=8'd45;b=8'd23;
+#5 opt=0;a=8'd24;b=8'd33;
+#5 opt=3;a=8'd24;b=8'd2;
+
+#5 $finish;
+end
+endmodule
+
+
+//TITLE: Digital Calculator in Verilog
+//AUTHOR: Mohammad Armaan Hussain
