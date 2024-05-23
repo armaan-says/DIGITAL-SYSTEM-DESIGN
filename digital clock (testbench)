@@ -17,3 +17,8 @@ clk=0;
 end
  always #0.5 clk=~clk;
  endmodule
+
+//TITLE: Digital Clock in Verilog
+//AUTHOR: Mohammad Armaan Hussain
+
+
