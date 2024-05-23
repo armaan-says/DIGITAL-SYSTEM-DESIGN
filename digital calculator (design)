@@ -1,0 +1,26 @@
+//This is the design code of a digital calculator using verilog
+
+module digital_calculator(result,a,b,opt);
+input [7:0]a,b;// two 8 bit inputs
+input [1:0]opt;
+output reg [15:0]result;// one 16 bit output, assuming the multiplcation result is maximum of 16bits
+
+always@(a,b)
+begin
+case(opt)
+2'b00:result=a+b;//addition
+2'b01:begin// modulo subtraction |a-b|
+        if(a>b)
+            result=a-b;
+        else
+            result=b-a;
+      end
+2'b10:result=a*b;//multiplication
+2'b11:result=a/b;//divison
+endcase
+
+end 
+endmodule
+
+//TITLE: Digital Calculator
+//AUTHOR: Mohammad Armaan Hussain
