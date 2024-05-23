@@ -1,0 +1,39 @@
+//This is the design code of a countdown timer in verilog 
+
+module timer(min,sec,time_out,set_m,set_s,load,clk);
+input clk,load;
+input [5:0]set_m,set_s;
+output reg [5:0]min,sec;
+output reg time_out=0;
+always @(posedge clk or load)
+begin
+    if(load==1)
+        begin
+        min=set_m;
+        sec=set_s;
+        end
+    else
+        begin
+            if(sec==0&&min!=0)
+                begin
+                sec<=6'd59;
+                min<=min-1;
+                end
+            else if(min==0&&sec!=0)
+                begin
+                sec=sec-1;
+                end
+            else if(min!=0&&sec!=0)
+                begin
+                    sec<=sec-1;
+                end
+            else if(min==0&&sec==0)
+                begin
+                time_out=1;
+                end
+        end
+end
+endmodule
+
+//TITLE: Digital Countdown Timer in Verilog
+//AUTHOR: Mohammad Armaan Hussain
