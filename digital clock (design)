@@ -36,3 +36,6 @@ begin
 
 end
 endmodule
+
+//TITLE: Digital Clock in Verilog
+//AUTHOR: Mohammad Armaan Hussain
