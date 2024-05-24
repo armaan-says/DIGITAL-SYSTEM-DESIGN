@@ -1,0 +1,23 @@
+//This is the testbench code for a digital light intensity display
+
+`timescale 1ns/1ps
+
+module light_intensity_tb;
+wire [7:0]display_value;
+reg [7:0]light_sensor_value;
+light_intensity_d uut(display_value,light_sensor_value);
+initial 
+    begin
+    light_sensor_value=8'd255;
+    #5 light_sensor_value=8'd40;
+    #5 light_sensor_value=8'd36;
+    #5 light_sensor_value=8'd100;
+    #5 light_sensor_value=8'd23;
+    #5 light_sensor_value=8'd0;
+    #5 light_sensor_value=8'd200;
+    #5 $finish;
+    end
+endmodule
+
+//TITLE: Digital Light Intensity Display
+//AUTHOR: Mohammad Armaan Hussain
