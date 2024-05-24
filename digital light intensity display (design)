@@ -1,0 +1,17 @@
+//This is the design code of a digital light intensity display (according to the given problem) using verilog
+
+module light_intensity_d(display_value,light_sensor_value);
+input [7:0]light_sensor_value;
+output reg [7:0]display_value;
+always @(light_sensor_value)
+begin
+if(light_sensor_value==0)
+    display_value=8'd0;
+ else
+ display_value=(light_sensor_value*light_sensor_value)/255;
+ //according to problem statement
+end
+endmodule
+
+//TITLE: Digital Light Intensity Display
+//AUTHOR: Mohammad Armaan Hussain
