@@ -1,0 +1,18 @@
+/*This is the design code of a temperature sensor 
+    designed according to thw problem
+*/
+
+module temperature_sensor_d(display_value,temp_sensor_value);
+input [7:0]temp_sensor_value;
+output reg [7:0]display_value;
+always @(temp_sensor_value)
+begin
+    if(temp_sensor_value<=0)
+        display_value=0;
+    else
+        display_value=(temp_sensor_value*2)-20;
+end
+endmodule
+
+//TITLE: Digital Temperature Sensor
+//AUTHOR: Mohammad Armaan Husain
