@@ -1,0 +1,25 @@
+/*This is the design code of a temperature sensor 
+    designed according to thw problem
+*/
+
+`timescale 1ns/1ps
+module temp_sensor_tb;
+wire [7:0]display_value;
+reg [7:0]temp_sensor_value;
+
+temperature_sensor_d(display_value,temp_sensor_value);
+initial 
+    begin
+    temp_sensor_value=8'd255;
+    #5 temp_sensor_value=8'd40;
+    #5 temp_sensor_value=8'd36;
+    #5 temp_sensor_value=8'd100;
+    #5 temp_sensor_value=8'd23;
+    #5 temp_sensor_value=8'd0;
+    #5 temp_sensor_value=8'd200;
+    #5 $finish;
+    end
+endmodule
+
+//TITLE: Digital Temperature Sensor
+//AUTHOR: Mohammad Armaan Husain
