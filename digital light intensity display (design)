@@ -6,9 +6,10 @@ output reg [7:0]display_value;
 always @(light_sensor_value)
 begin
 if(light_sensor_value==0)
-    display_value=8'd0;
+     display_value=8'd0;
  else
- display_value=(light_sensor_value*light_sensor_value)/255;
+     display_value=(light_sensor_value*light_sensor_value)/255;
+
  //according to problem statement
 end
 endmodule
