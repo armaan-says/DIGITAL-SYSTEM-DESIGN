@@ -5,7 +5,7 @@ module timer_tb;
 reg clk,load;
 reg [5:0]set_m,set_s;
 wire [5:0]min,sec;
-wire time_out=0;
+wire time_out;
 timer uut(min,sec,time_out,set_m,set_s,load,clk);
 initial 
 begin
@@ -13,7 +13,7 @@ clk=0;
 load=1;set_m=6'd3;set_s=6'd00; // sample time
 #1 load=0;
 end
-always #5 clk=~clk;
+always #2 clk=~clk; //set the #n according to simulator
 endmodule
 
 //TITLE: Digital Timer in Verilog
