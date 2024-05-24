@@ -16,5 +16,6 @@ end
 always #2 clk=~clk; //set the #n according to simulator
 endmodule
 
+
 //TITLE: Digital Timer in Verilog
 //AUTHOR: Mohammad Armaan Hussain
