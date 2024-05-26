@@ -1,0 +1,38 @@
+//This is testbench for the basic traffic light controller 
+
+`timescale 1ns/1ps
+module tc_tb;
+reg clk,reset;
+wire glight,rlight;
+traffic_light_controller uut(glight,rlight,clk,reset);
+    initial
+     begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10 time units period
+     end
+    initial
+     begin
+     // Monitor the outputs
+         $monitor("Time: %0t, Reset: %b, Green Light: %b, Red Light: %b", $time, reset, glight, rlight);
+    
+         // Initial conditions
+        reset = 1;
+        #10; // Hold reset for 10 time units
+    
+        reset = 0;
+        #200; // Run the simulation for 200 time units to observe multiple cycles
+    
+         reset = 1;
+        #10; // Assert reset again for 10 time units
+    
+        reset = 0;
+         #200; // Run the simulation for another 100 time units
+    
+        $stop; // Stop the simulation
+  end
+endmodule
+
+
+
+//TITLE:Basic Traffic Light Contoller
+//AUTHOR:Mohammad Armaan Hussain
