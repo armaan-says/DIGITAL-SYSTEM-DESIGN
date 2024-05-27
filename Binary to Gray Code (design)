@@ -1,0 +1,20 @@
+//This is the design code of conversion of a binary number to gray code
+module binary_to_gray (binary,gray);
+parameter w=5;
+input [w-1:0]binary;
+output reg [w-1:0]gray;
+integer i;
+
+always @(*) 
+begin
+    gray[w-1] = binary[w-1]; // MSB remains the same
+    for (i = w-2; i >= 0; i = i - 1) 
+    begin
+        gray[i] = binary[i+1] ^ binary[i];
+    end
+end
+
+endmodule
+
+//TITLE: Binary to Gray Code Using Behaviour Modelling
+//AUTHOR: Mohammad Armaan Hussain
