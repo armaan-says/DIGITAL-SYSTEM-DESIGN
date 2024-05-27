@@ -1,0 +1,21 @@
+//This is the testbench code of conversion of a binary number to gray code
+
+`timescale 1ns/1ps
+module b_to_g;
+parameter w = 5; // Parameter for the width
+reg [w-1:0] binary;
+wire [w-1:0] gray;
+binary_to_gray uut(binary,gray);
+initial
+    begin
+    binary=5'b10110;
+    #5 binary=5'b01010;
+    #5 binary=5'b11100;
+    #5 binary=5'b10010;
+    #5 $finish;
+    end
+endmodule
+
+
+//TITLE: Binary to Gray Code Using Behaviour Modelling
+//AUTHOR: Mohammad Armaan Hussain
