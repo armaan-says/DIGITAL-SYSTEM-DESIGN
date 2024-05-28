@@ -1,0 +1,44 @@
+//This is the design code of the lock system 
+
+
+module lock_system(lock,current_pin,input_pin,enter,load);
+input [7:0] input_pin;
+input [7:0] current_pin;
+input enter;
+input load;
+output reg lock=0;
+
+reg [7:0] set_pin;
+
+always @(posedge load or posedge enter) 
+ begin
+        if (load && !enter)
+          begin
+          // Set the input_pin as the new password
+          set_pin = input_pin;
+          lock = 0; // Lock remains closed during the setting of the new password
+          $display("New password set to %b", set_pin);
+          end
+        else if (enter && !load) 
+          begin
+             // Compare the current_pin with the set_pin
+            if (current_pin == set_pin) 
+            begin
+            lock = 1; // Open lock if the entered value matches the password
+            end 
+            else
+            begin
+            lock = 0; // Keep lock closed if the entered value does not match the password
+            end
+          end 
+        else 
+        begin
+        lock = 0; // Keep lock closed otherwise
+        end
+end
+
+endmodule
+
+
+//TITLE: Lock System
+//AUTHOR: Mohammad Armaan Hussain
