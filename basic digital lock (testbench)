@@ -1,0 +1,65 @@
+//This is the testbench of the lock system 
+
+`timescale 1ns/1ps
+module tb_lock_system;
+
+    reg [7:0] input_pin;
+    reg [7:0] current_pin;
+    reg enter;
+    reg load;
+    wire lock;
+
+    // Instantiate the lock_system module
+    lock_system uut (
+        .input_pin(input_pin),
+        .current_pin(current_pin),
+        .enter(enter),
+        .load(load),
+        .lock(lock)
+    );
+
+    initial
+     begin
+        // Initialize signals
+        input_pin = 8'b0;
+        current_pin = 8'b0;
+        enter = 0;
+        load = 0;
+
+        // Set a new password
+        #10 load = 1; enter = 0; input_pin = 8'b10101010; // Set password to 170
+        #10 load = 0;
+
+        // Try to unlock with the wrong password
+        #10 load = 0; enter = 1; current_pin = 8'b11110000; // Attempt with 240
+        #10 enter = 0;
+
+        // Try to unlock with the correct password
+        #10 load = 0; enter = 1; current_pin = 8'b10101010; // Attempt with 170
+        #10 enter = 0;
+
+        // Change the password
+        #10 load = 1; enter = 0; input_pin = 8'b11001100; // Set password to 204
+        #10 load = 0;
+
+        // Try to unlock with the old password
+        #10 load = 0; enter = 1; current_pin = 8'b10101010; // Attempt with 170
+        #10 enter = 0;
+
+        // Try to unlock with the new password
+        #10 load = 0; enter = 1; current_pin = 8'b11001100; // Attempt with 204
+        #10 enter = 0;
+
+        // End simulation
+        #20 $stop;
+    end
+
+    initial 
+    begin
+        $monitor("At time %t, input_pin = %b, current_pin = %b, enter = %b, load = %b, lock = %b", $time, input_pin, current_pin, enter, load, lock);
+    end
+
+endmodule
+
+//TITLE: Lock System
+//AUTHOR: Mohammad Armaan Hussain
