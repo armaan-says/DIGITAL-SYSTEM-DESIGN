@@ -1,4 +1,4 @@
-//This is the design code of the traffic controller loght according to the description
+//This is the design code of the traffic controller light according to the description
 
 
 module traffic_light_controller(glight,rlight,clk,reset);
