@@ -9,7 +9,7 @@ module traffic_light_controller(glight,rlight,clk,reset);
   reg [3:0] counter; 
   parameter GREEN_TIME = 10;
   parameter RED_TIME = 5;
-  always @(posedge clk or posedge reset) 
+  always @(posedge clk or posedge reset)   //for every clk triggered or reset triggered at positive edge the block will execute again
 begin
     if (reset) 
     begin
